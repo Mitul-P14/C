@@ -21,12 +21,7 @@ float numKilom = 0;
 
 int main()
 {
-    /* ofstream outName;
-    outName.open("fiel name.txt", ios::app or out)
-    cheach with if(outName.is_open() == true){}
-    else {}
-    outGrade.close();
-    */
+    /*
 
 
 //      SCENARIO ONE
@@ -77,7 +72,7 @@ int main()
 
 
 
-
+*/
 
 
 
@@ -86,8 +81,11 @@ int main()
 
     if (outConvert.is_open() == true)
     {
-        for (int a = 0; a > 0; a++)
+        for (int a = 1; a > 0; a++)
         {
+
+            outConvert.open("mileskilo.txt", ios::out);
+
             cout << "\n\n\nPlease enter the numbe of miles: ";
             cin >> numMiles;
 
