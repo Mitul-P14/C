@@ -17,6 +17,7 @@ int numEntered;
 int product;
 int outProduct = 0;
 float numMiles = 0;
+float numKilom = 0;
 
 int main()
 {
@@ -26,7 +27,7 @@ int main()
     else {}
     outGrade.close();
     */
-    
+
 
 //      SCENARIO ONE
     outFood.open("rr.txt", ios::app);
@@ -54,7 +55,7 @@ int main()
 
 //          SCENARIO 2
     outMultiply.open("multiply.txt", ios::app);
-    
+
     if (outMultiply.is_open() == true)
     {
         cout << "\n\n\nEnter an integer: ";
@@ -67,7 +68,7 @@ int main()
         }
     }
 
-    else 
+    else
     {
         cout << "\n\n\nan error has occured";
     }
@@ -80,13 +81,29 @@ int main()
 
 
 
-//          SCENARIO 3  
+//          SCENARIO 3
     outConvert.open("mileskilo.txt", ios::out);
 
     if (outConvert.is_open() == true)
     {
-        cout << "\n\n\nPlease enter the numbe of miles: ";
-        cin >> numMiles;
+        for (int a = 0; a > 0; a++)
+        {
+            cout << "\n\n\nPlease enter the numbe of miles: ";
+            cin >> numMiles;
+
+            numKilom = numMiles * 1.609;
+
+            if (numKilom < 0 || numMiles < 0)
+            {
+                a = -20;
+                cout << "\n\nAn Error occured\nPlease try again later";
+            }
+
+            else
+            {
+                outConvert << numMiles << ", " << numKilom << "\n";
+            }
+        }
     }
 
     else
