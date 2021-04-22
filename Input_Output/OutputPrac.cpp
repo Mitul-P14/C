@@ -11,22 +11,20 @@ using std::string;
 ofstream outFood;
 ofstream outMultiply;
 ofstream outConvert;
+ofstream outQuiz;
 string foodName = " ";
+string userName = " ";
+string genderAnswer = " ";
 int foodRating = 0;
 int numEntered;
 int product;
 int outProduct = 0;
-float numMiles = 0;
+int ageAnswer;
+double numMiles = 0;
+double numKilom = 0;
 
 int main()
 {
-    /* ofstream outName;
-    outName.open("fiel name.txt", ios::app or out)
-    cheach with if(outName.is_open() == true){}
-    else {}
-    outGrade.close();
-    */
-    
 
 //      SCENARIO ONE
     outFood.open("rr.txt", ios::app);
@@ -54,7 +52,7 @@ int main()
 
 //          SCENARIO 2
     outMultiply.open("multiply.txt", ios::app);
-    
+
     if (outMultiply.is_open() == true)
     {
         cout << "\n\n\nEnter an integer: ";
@@ -67,7 +65,7 @@ int main()
         }
     }
 
-    else 
+    else
     {
         cout << "\n\n\nan error has occured";
     }
@@ -80,17 +78,67 @@ int main()
 
 
 
-//          SCENARIO 3  
+//          SCENARIO 3
     outConvert.open("mileskilo.txt", ios::out);
 
     if (outConvert.is_open() == true)
     {
-        cout << "\n\n\nPlease enter the numbe of miles: ";
-        cin >> numMiles;
+        if (outConvert.is_open() == true)
+        {
+            cout << "\n\n\nPlease enter the number of miles: ";
+            cin >> numMiles;
+            while (numMiles == 0 || numMiles > 0)
+            {
+                numKilom = numMiles * 1.60934;
+                outConvert << numMiles << ", " << numKilom << endl;
+                cout << "\n\n\nPlease enter the number of miles: ";
+                cin >> numMiles;
+
+                if (numMiles < 0)
+                {
+                    cout << "\nLoop has been ended";
+                }
+            }
+        }
+
+        outConvert.close();
     }
 
     else
     {
         cout << "\n\n\nAn error has occured";
+    }
+
+
+
+
+
+
+
+
+//             SCENARIO 4
+    outQuiz.open("quiz.txt", ios::out);
+
+    if (outQuiz.is_open() == true)
+    {
+        cout << "\n\n\nWhat is your name?\n";
+        cin.ignore();
+        getline (cin, userName);
+
+        cout << "\nAre you above the age of 18? 1 for no and 2 for yes\n";
+        cin >> ageAnswer;
+
+        cout << "\nWhat is your gender?\n";
+        cin.ignore();
+        getline (cin, genderAnswer);
+
+        outQuiz << userName << "#" << ageAnswer << "#" << genderAnswer;
+
+        outQuiz.close();
+    }
+
+    else
+    {
+        cout << "\n\nAn error has occured. Please try again at a later time";
     }
 }
