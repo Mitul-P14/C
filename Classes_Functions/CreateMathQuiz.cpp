@@ -1,33 +1,23 @@
 #include <iostream>
 #include <cmath>
 #include <ctime>
-#include <string>
-#include <sstream>
+#include <math.h>
+#include <iomanip>
 using namespace std;
 using std::pow;
 using std::string;
 
 void Correct ();
-void Wrong (int);
+void Wrong (double);
 
 int main() {
-    /*
-    6 questions total
-    Of the 6 questions:
-        2 questions use random numbers
-         question uses pow
-        2 questions must use rounding - 1 that does round to whole number and 1 that does roundf to 2 decimal places
-    After they type in their answer to a question tell them if they are right or wrong.
-    Example:  You got it right!  It was 3                     or                  Sorry you got it wrong. The answer was 3
-    */
-
-
 
     double userAnswer = 0;
     double correctAnswer = 0;
 
 
     //question 1
+    srand(int(time(0)));
     int random = 1 + rand() % (20-1+1);
     int rand2 = 1 + rand() % (20-1+1);
 
@@ -53,17 +43,54 @@ int main() {
 
 
     //question 3
+    random = 1 + rand() % (200-1+1);
+
+    cout << "\n\n" << random << "/2 equals what? (round up if needed)\n";
+    cin >> userAnswer;
+
+    correctAnswer = random/2;
+
+    if (userAnswer == correctAnswer) {Correct();}
+    else {Wrong(correctAnswer);}
+
+
+
+    //question 4
+    cout << "\n\n13/3 equals what? (round down if necesary)\n";
+    cin >> userAnswer;
+
+    correctAnswer = floor(13/3);
+
+    if (userAnswer == correctAnswer) {Correct();}
+    else {Wrong(correctAnswer);}
+
+
+
+    //question 5
+    random = 1 + rand() % (100-1+1);
+
+    cout << "\n\n" << random << "%2 equals what? (do not round)\n";
+    cin >> userAnswer;
+
+    correctAnswer = random%2;
+
+    if (userAnswer == correctAnswer) {Correct();}
+    else {Wrong(correctAnswer);}
+
+
+
+    //question 6
+    cout << "13/9 equals what? (round to 2 decimal places)\n";
+    cin >> userAnswer;
+
+    correctAnswer = (ceil((13/9)*100))/100;
+
+    if (userAnswer == correctAnswer) {Correct();}
+    else {Wrong(correctAnswer);}
 
 }
 
 
 
-void Correct()
-{
-    cout << "\nGreat Job! That was the correct answer!\n";
-}
-
-void Wrong(int right)
-{
-    cout << "\nSorry but that\'s the wrong answer\nThe correct answer was " << right << "\n";
-}
+void Correct(){cout << "\nGreat Job! That was the correct answer!\n";}
+void Wrong(double right){cout << "\nSorry but that\'s the wrong answer\nThe correct answer was " << right << "\n";}
